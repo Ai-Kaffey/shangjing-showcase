@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>商境 · AI 电商内容工作台</title>
+  <meta name="description" content="商境是一套面向电商商品内容生产的全栈 AI 工作台：商品长期聊天、项目画布、图片生成、视频分镜、素材管理与权限审计。" />
+  <meta property="og:title" content="商境 · AI 电商内容工作台" />
+  <meta property="og:description" content="从商品资料到项目画布、图片生成、视频分镜与素材管理的一条完整创作链路。" />
+  <meta property="og:image" content="https://troops-hunt-dresses-encryption.trycloudflare.com/showcase/assets/04-canvas.png" />
+  <style>
+    :root {
+      --blue: #385ae8;
+      --blue-dark: #2948c9;
+      --canvas: #f5f7fa;
+      --ink: #25313e;
+      --muted: #6b7a8c;
+      --line: #e3e8ef;
+      --white: #fff;
+      --shadow: 0 18px 50px rgba(37, 49, 62, .12);
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--white);
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
+    .nav {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; letter-spacing: .02em; }
+    .brand-mark {
+      width: 30px; height: 30px; border-radius: 9px;
+      background: linear-gradient(135deg, var(--blue), #7a93ff);
+      box-shadow: 0 7px 18px rgba(56,90,232,.28);
+      position: relative;
+    }
+    .brand-mark::after {
+      content: ""; position: absolute; inset: 8px 7px;
+      border: 2px solid #fff; border-radius: 4px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 26px; font-size: 14px; color: var(--muted); }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 16px; border-radius: 9px;
+      color: #fff; background: var(--ink); font-weight: 600;
+    }
+    .nav-cta:hover { background: var(--blue); }
+    .hero { padding: 76px 0 58px; background:
+      radial-gradient(900px 420px at 80% 0%, rgba(56,90,232,.10), transparent 65%),
+      linear-gradient(180deg, #fbfcff 0%, #fff 100%);
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 54px; align-items: center; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 12px; border-radius: 999px;
+      background: #eef2ff; color: var(--blue);
+      font-size: 13px; font-weight: 700;
+    }
+    .badge i { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
+    h1 { margin: 20px 0 18px; font-size: clamp(40px, 5.2vw, 66px); line-height: 1.1; letter-spacing: -.04em; }
+    .hero p { margin: 0; max-width: 570px; font-size: 17px; color: var(--muted); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 46px; padding: 0 20px; border-radius: 10px;
+      border: 1px solid var(--line); background: #fff; color: var(--ink);
+      font-size: 15px; font-weight: 700; cursor: pointer;
+    }
+    .btn.primary { background: var(--blue); border-color: var(--blue); color: #fff; box-shadow: 0 12px 30px rgba(56,90,232,.24); }
+    .btn.primary:hover { background: var(--blue-dark); }
+    .btn:hover { border-color: #c9d2df; }
+    .hero-shot {
+      position: relative;
+      border-radius: 18px; padding: 10px;
+      background: #e9eef7; border: 1px solid #dde5f1;
+      box-shadow: var(--shadow);
+      transform: perspective(1200px) rotateY(-4deg) rotateX(1.5deg);
+    }
+    .hero-shot img { border-radius: 11px; border: 1px solid #d9e1ed; }
+    .hero-note {
+      position: absolute; right: -18px; bottom: -22px;
+      display: flex; align-items: center; gap: 9px;
+      padding: 11px 14px; border-radius: 11px;
+      background: #fff; box-shadow: 0 12px 30px rgba(37,49,62,.16);
+      font-size: 13px; font-weight: 600;
+    }
+    .hero-note span { width: 9px; height: 9px; border-radius: 50%; background: #23a55a; box-shadow: 0 0 0 4px #e8f7ee; }
+    .metrics { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #fff; }
+    .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .metric { padding: 26px 20px; border-right: 1px solid var(--line); }
+    .metric:last-child { border-right: 0; }
+    .metric b { display: block; font-size: 27px; letter-spacing: -.02em; }
+    .metric span { color: var(--muted); font-size: 13px; }
+    section { padding: 76px 0; }
+    .section-head { max-width: 720px; margin-bottom: 34px; }
+    .eyebrow { color: var(--blue); font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    h2 { margin: 8px 0 12px; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.2; letter-spacing: -.03em; }
+    .section-head p { margin: 0; color: var(--muted); font-size: 16px; }
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .feature {
+      padding: 26px 24px; border: 1px solid var(--line); border-radius: var(--radius);
+      background: #fff; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .feature:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(37,49,62,.08); border-color: #cfd9e8; }
+    .feature .ico {
+      width: 38px; height: 38px; border-radius: 10px;
+      display: grid; place-items: center; margin-bottom: 16px;
+      background: #eef2ff; color: var(--blue); font-size: 18px; font-weight: 800;
+    }
+    .feature h3 { margin: 0 0 8px; font-size: 17px; }
+    .feature p { margin: 0; color: var(--muted); font-size: 14px; }
+    .gallery { background: var(--canvas); }
+    .shots { display: grid; grid-template-columns: 1.15fr .85fr; gap: 18px; }
+    .shot {
+      position: relative; overflow: hidden; border-radius: var(--radius);
+      border: 1px solid #dfe6f0; background: #fff; box-shadow: 0 10px 28px rgba(37,49,62,.06);
+    }
+    .shot img { width: 100%; }
+    .shot.wide { grid-column: 1 / -1; }
+    .shot figcaption {
+      display: flex; justify-content: space-between; gap: 12px;
+      padding: 13px 16px; border-top: 1px solid var(--line);
+      font-size: 13px; color: var(--muted);
+    }
+    .shot figcaption b { color: var(--ink); font-size: 14px; }
+    .flow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; counter-reset: step; }
+    .step {
+      position: relative; padding: 20px 16px; border-radius: 12px;
+      background: #f8faff; border: 1px solid #e3e9f5;
+    }
+    .step::before {
+      counter-increment: step; content: "0" counter(step);
+      display: inline-grid; place-items: center; width: 26px; height: 26px;
+      margin-bottom: 12px; border-radius: 8px; background: var(--blue); color: #fff;
+      font-size: 12px; font-weight: 800;
+    }
+    .step b { display: block; font-size: 14px; }
+    .step span { display: block; margin-top: 5px; color: var(--muted); font-size: 12px; line-height: 1.55; }
+    .arch { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; align-items: start; }
+    .stack { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .stack th, .stack td { padding: 13px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .stack th { width: 108px; color: var(--muted); font-weight: 600; }
+    .arch-card { padding: 24px; border-radius: var(--radius); background: #f8faff; border: 1px solid #e3e9f5; }
+    .arch-flow { display: grid; gap: 9px; }
+    .arch-node { padding: 12px 14px; border-radius: 9px; background: #fff; border: 1px solid #dde5f1; font-size: 14px; }
+    .arch-node b { color: var(--blue); }
+    .arrow { color: #9aa9bb; font-size: 12px; text-align: center; }
+    .note {
+      margin-top: 24px; padding: 18px 20px; border-radius: 12px;
+      background: #fff8eb; border: 1px solid #f5dfb8; color: #6f5624; font-size: 13px;
+    }
+    footer { padding: 38px 0 46px; border-top: 1px solid var(--line); background: #fff; }
+    .footer-grid { display: flex; justify-content: space-between; gap: 24px; align-items: center; }
+    .footer-grid p { margin: 0; color: var(--muted); font-size: 13px; }
+    .footer-links { display: flex; gap: 20px; font-size: 13px; color: var(--muted); }
+    .footer-links a:hover { color: var(--blue); }
+    @media (max-width: 900px) {
+      .hero-grid, .arch { grid-template-columns: 1fr; }
+      .hero-shot { transform: none; margin-top: 8px; }
+      .features { grid-template-columns: 1fr 1fr; }
+      .flow { grid-template-columns: repeat(3, 1fr); }
+      .shots { grid-template-columns: 1fr; }
+      .shot.wide { grid-column: auto; }
+      .metrics-grid { grid-template-columns: 1fr 1fr; }
+      .metric:nth-child(2) { border-right: 0; }
+      .metric:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    }
+    @media (max-width: 620px) {
+      .wrap { width: min(100% - 28px, 1180px); }
+      .nav-links { display: none; }
+      .hero { padding-top: 48px; }
+      .features, .flow { grid-template-columns: 1fr; }
+      .footer-grid { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./"><span class="brand-mark" aria-hidden="true"></span>商境</a>
+      <nav class="nav-links" aria-label="页面导航">
+        <a href="#features">能力</a>
+        <a href="#screens">界面</a>
+        <a href="#flow">流程</a>
+        <a href="#stack">架构</a>
+      </nav>
+      <a class="nav-cta" href="#screens">界面预览</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="badge"><i></i>全栈 AI 产品 · 2026</span>
+          <h1>让商品<br />被看见。</h1>
+          <p>商境把商品资料、创意素材和生成任务放在同一条创作链路里：长期聊天沉淀事实，无限画布组织创意，图片、视频与素材在同一处交付。</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#screens">查看真实界面 →</a>
+            <a class="btn" href="#flow">了解流程</a>
+          </div>
+        </div>
+        <div class="hero-shot">
+          <img src="showcase/assets/02-dashboard.png" alt="商境工作台界面：运行中任务、待处理记录与最近项目" />
+          <div class="hero-note"><span aria-hidden="true"></span>React 19 · Node.js 24 · PostgreSQL</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="metrics">
+      <div class="wrap metrics-grid">
+        <div class="metric"><b>5</b><span>核心工作区</span></div>
+        <div class="metric"><b>8</b><span>画布节点类型</span></div>
+        <div class="metric"><b>3</b><span>角色逐接口鉴权</span></div>
+        <div class="metric"><b>1</b><span>条完整创作链路</span></div>
+      </div>
+    </div>
+
+    <section id="features">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Capabilities</div>
+          <h2>不是生成器拼盘，<br />是一条能落地的内容生产线。</h2>
+          <p>从商品事实到成功版本，每一步都可追溯、可重试、可复用；AI 只建议，付费执行前必须由人预览确认。</p>
+        </div>
+        <div class="features">
+          <article class="feature">
+            <div class="ico">聊</div>
+            <h3>商品长期聊天</h3>
+            <p>截图、链接与手动描述边聊边整理，沉淀名称、参数、材质、卖点与证据，不因会话结束而丢失上下文。</p>
+          </article>
+          <article class="feature">
+            <div class="ico">画</div>
+            <h3>项目无限画布</h3>
+            <p>商品输入、图片输入、提示词、生图、改图、合成、视频与输出八类节点，连线按媒体类型校验。</p>
+          </article>
+          <article class="feature">
+            <div class="ico">影</div>
+            <h3>视频工作台</h3>
+            <p>AI 生成脚本与分镜，分镜直接成为画布节点；全部镜头成功后由服务端 ffmpeg 拼接成片。</p>
+          </article>
+          <article class="feature">
+            <div class="ico">模</div>
+            <h3>模型中心</h3>
+            <p>目录发现与执行能力分离，文本、视觉、图片、视频渠道分别配置；新发现模型默认不启用。</p>
+          </article>
+          <article class="feature">
+            <div class="ico">任</div>
+            <h3>可靠任务执行</h3>
+            <p>持久化任务、同编号幂等、取消、失败重试与供应商状态轮询；不自动重提、不自动换模型。</p>
+          </article>
+          <article class="feature">
+            <div class="ico">权</div>
+            <h3>权限与审计</h3>
+            <p>管理员、运营、查看者三角色逐接口鉴权；会话令牌不入 localStorage，渠道密钥加密存储。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="screens" class="gallery">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Interface</div>
+          <h2>真实运行界面</h2>
+          <p>以下截图来自运行中的工作区，展示从项目画布到商品长聊、素材库与模型中心的实际形态。</p>
+        </div>
+        <div class="shots">
+          <figure class="shot wide">
+            <img src="showcase/assets/04-canvas.png" alt="项目画布：商品主图任务包含图片输入、提示词与生图节点" loading="lazy" />
+            <figcaption><b>项目画布</b><span>节点编排 · 参数面板 · 任务运行记录</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="showcase/assets/06-product-chat.png" alt="商品长期聊天：AI 整理商品资料并提示缺失字段" loading="lazy" />
+            <figcaption><b>商品长期聊天</b><span>资料完整度 · 截图证据 · AI 追问</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="showcase/assets/03-projects.png" alt="项目列表：商品封面、任务数量与最近更新" loading="lazy" />
+            <figcaption><b>项目列表</b><span>封面 · 任务数 · 最近更新</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="showcase/assets/07-assets.png" alt="素材库：图片、视频与创作模板" loading="lazy" />
+            <figcaption><b>素材库</b><span>图片 · 视频 · 提示词模板</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="showcase/assets/08-system.png" alt="模型中心：模型目录、人工能力与执行器支持" loading="lazy" />
+            <figcaption><b>模型中心</b><span>目录 · 能力 · 执行器 · 默认环节</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="showcase/assets/01-login.png" alt="商境登录页" loading="lazy" />
+            <figcaption><b>登录入口</b><span>HttpOnly 会话 · 首次强制改密</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="showcase/assets/05-products.png" alt="商品资料库：从一句话开始整理商品" loading="lazy" />
+            <figcaption><b>商品资料库</b><span>链接 · 截图 · 手动描述</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="flow">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Workflow</div>
+          <h2>主流程</h2>
+          <p>商品资料独立沉淀，项目按任务组织；预览范围后再开始，下游引用具体成功版本，而不是「最新一次」。</p>
+        </div>
+        <div class="flow">
+          <div class="step"><b>商品长期聊天</b><span>事实、截图证据与建议持续沉淀</span></div>
+          <div class="step"><b>独立创作素材</b><span>资料图、创作素材、结果与蒙版分开</span></div>
+          <div class="step"><b>项目无限画布</b><span>节点连接商品、提示词与生成能力</span></div>
+          <div class="step"><b>预览并开始</b><span>先看范围与参数，再创建付费任务</span></div>
+          <div class="step"><b>选择成功版本</b><span>下游手选具体版本，不自动取最新</span></div>
+          <div class="step"><b>再开始</b><span>打包、导出或继续下一轮创作</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stack" class="gallery">
+      <div class="wrap arch">
+        <div>
+          <div class="eyebrow">Architecture</div>
+          <h2>全栈自建，<br />关键边界留在服务端。</h2>
+          <table class="stack">
+            <tr><th>前端</th><td>React 19、Vite 8、@xyflow/react 12</td></tr>
+            <tr><th>后端</th><td>Node.js 24、原生 HTTP、自动路由发现</td></tr>
+            <tr><th>数据</th><td>PostgreSQL 持久化业务数据与任务队列</td></tr>
+            <tr><th>对象存储</th><td>MinIO 私有桶，浏览器不持有长期密钥</td></tr>
+            <tr><th>模型</th><td>OpenAI 兼容、Anthropic、DeepSeek、OMYAI、MiniMax H3</td></tr>
+            <tr><th>媒体</th><td>ffmpeg 拼接、图片元数据校验、媒体签名</td></tr>
+            <tr><th>测试</th><td>Node test runner、PostgreSQL 集成测试、Playwright</td></tr>
+          </table>
+        </div>
+        <div class="arch-card">
+          <div class="arch-flow">
+            <div class="arch-node"><b>浏览器</b> · React 工作区 / 画布 / 素材</div>
+            <div class="arrow">↓ 同源 API + HttpOnly 会话 + CSRF</div>
+            <div class="arch-node"><b>Node API</b> · 鉴权 / 任务 / 聚合 / 媒体签名</div>
+            <div class="arrow">↓ 服务端持有连接与密钥</div>
+            <div class="arch-node"><b>PostgreSQL</b> · 聊天 / 项目 / 任务 / 审计</div>
+            <div class="arch-node"><b>MinIO</b> · 私有素材与导出对象</div>
+            <div class="arch-node"><b>模型渠道</b> · 文本 / 视觉 / 图片 / 视频</div>
+            <div class="arch-node"><b>ffmpeg</b> · 视频镜头拼接与成片</div>
+          </div>
+        </div>
+      </div>
+      <div class="wrap">
+        <div class="note">
+          <b>项目边界：</b>视频 H3 目前完成协议 fixture 验证，未做真实付费调用验收；截图识别需同时配置文本与视觉渠道；公开演示实例应使用独立数据库、独立模型额度与公共可信 TLS。
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div>
+        <div class="brand"><span class="brand-mark" aria-hidden="true"></span>商境</div>
+        <p>AI 电商内容工作台 · 个人全栈项目</p>
+      </div>
+      <nav class="footer-links" aria-label="页脚链接">
+        <a href="#features">能力</a>
+        <a href="#screens">界面</a>
+        <a href="#flow">流程</a>
+        <a href="#stack">架构</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
