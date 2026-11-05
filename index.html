@@ -99,6 +99,22 @@
     }
     .hero-note span { width: 9px; height: 9px; border-radius: 50%; background: #23a55a; box-shadow: 0 0 0 4px #e8f7ee; }
     .metrics { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #fff; }
+    .demo-band { background: #101a2d; color: #fff; padding: 58px 0; }
+    .demo-card { display: grid; grid-template-columns: 1.2fr .8fr; gap: 34px; align-items: center; }
+    .demo-card .eyebrow { color: #9db0ff; }
+    .demo-card h2 { color: #fff; margin-bottom: 12px; }
+    .demo-card p { color: #c7d2e5; margin: 0; }
+    .demo-credentials { display: grid; gap: 8px; margin: 20px 0 24px; }
+    .demo-credentials code {
+      display: block; padding: 11px 13px; border-radius: 8px;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12);
+      color: #dbe4ff; font-size: 13px; overflow-wrap: anywhere;
+    }
+    .demo-aside {
+      padding: 22px; border-radius: 14px; font-size: 13px; line-height: 1.8;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); color: #b9c6dd;
+    }
+    .demo-aside b { color: #fff; }
     .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
     .metric { padding: 26px 20px; border-right: 1px solid var(--line); }
     .metric:last-child { border-right: 0; }
@@ -168,7 +184,7 @@
     .footer-links { display: flex; gap: 20px; font-size: 13px; color: var(--muted); }
     .footer-links a:hover { color: var(--blue); }
     @media (max-width: 900px) {
-      .hero-grid, .arch { grid-template-columns: 1fr; }
+      .hero-grid, .arch, .demo-card { grid-template-columns: 1fr; }
       .hero-shot { transform: none; margin-top: 8px; }
       .hero-note { right: 8px; bottom: -16px; }
       .features { grid-template-columns: 1fr 1fr; }
@@ -194,6 +210,7 @@
       <a class="brand" href="./"><span class="brand-mark" aria-hidden="true"></span>商境</a>
       <nav class="nav-links" aria-label="页面导航">
         <a href="#features">能力</a>
+        <a href="#demo">在线 Demo</a>
         <a href="#screens">界面</a>
         <a href="#flow">流程</a>
         <a href="#stack">架构</a>
@@ -217,6 +234,26 @@
         <div class="hero-shot">
           <img src="showcase/assets/02-dashboard.png" alt="商境工作台界面：运行中任务、待处理记录与最近项目" />
           <div class="hero-note"><span aria-hidden="true"></span>React 19 · Node.js 24 · PostgreSQL</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-band" id="demo">
+      <div class="wrap demo-card">
+        <div>
+          <div class="eyebrow">Live Demo</div>
+          <h2>登录后直接操作</h2>
+          <p>公开演示实例使用独立数据库、独立对象存储和本地模拟模型；不接触主数据，不调用真实供应商，不产生费用。</p>
+          <div class="demo-credentials">
+            <code>运营：demo@example.test / Demo2026!@</code>
+            <code>查看者：demo-viewer@example.test / Viewer2026!@</code>
+          </div>
+          <a class="btn primary" href="https://critical-warranty-allan-listen.trycloudflare.com/" target="_blank" rel="noreferrer">打开在线 Demo →</a>
+        </div>
+        <div class="demo-aside">
+          <b>演示边界</b><br />AI 对话和生成图来自本地模拟模型，不会调用真实供应商。演示数据会定期重置，请勿上传真实资料。
+          <br /><br />
+          <b>临时地址</b><br />Cloudflare 快速隧道重启后地址可能变化；展示页链接保持稳定。
         </div>
       </div>
     </section>
