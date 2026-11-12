@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>商境 · AI 电商内容工作台</title>
-  <meta name="description" content="商境是一套面向电商商品内容生产的全栈 AI 工作台：商品长期聊天、项目画布、图片生成、视频分镜、素材管理与权限审计。" />
-  <meta property="og:title" content="商境 · AI 电商内容工作台" />
+  <title>商境 · 企业级 AI 电商内容工作台</title>
+  <meta name="description" content="商境是面向电商团队的企业级 AI 内容生产平台：商品长期聊天、项目画布、图片生成、视频分镜、素材管理与权限审计。" />
+  <meta property="og:title" content="商境 · 企业级 AI 电商内容工作台" />
   <meta property="og:description" content="从商品资料到项目画布、图片生成、视频分镜与素材管理的一条完整创作链路。" />
   <meta property="og:image" content="https://ai-kaffey.github.io/shangjing-showcase/showcase/assets/04-canvas.png" />
   <style>
@@ -99,22 +99,22 @@
     }
     .hero-note span { width: 9px; height: 9px; border-radius: 50%; background: #23a55a; box-shadow: 0 0 0 4px #e8f7ee; }
     .metrics { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #fff; }
-    .demo-band { background: #101a2d; color: #fff; padding: 58px 0; }
-    .demo-card { display: grid; grid-template-columns: 1.2fr .8fr; gap: 34px; align-items: center; }
-    .demo-card .eyebrow { color: #9db0ff; }
-    .demo-card h2 { color: #fff; margin-bottom: 12px; }
-    .demo-card p { color: #c7d2e5; margin: 0; }
-    .demo-credentials { display: grid; gap: 8px; margin: 20px 0 24px; }
-    .demo-credentials code {
+    .experience-band { background: #101a2d; color: #fff; padding: 58px 0; }
+    .experience-card { display: grid; grid-template-columns: 1.2fr .8fr; gap: 34px; align-items: center; }
+    .experience-card .eyebrow { color: #9db0ff; }
+    .experience-card h2 { color: #fff; margin-bottom: 12px; }
+    .experience-card p { color: #c7d2e5; margin: 0; }
+    .experience-credentials { display: grid; gap: 8px; margin: 20px 0 24px; }
+    .experience-credentials code {
       display: block; padding: 11px 13px; border-radius: 8px;
       background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12);
       color: #dbe4ff; font-size: 13px; overflow-wrap: anywhere;
     }
-    .demo-aside {
+    .experience-aside {
       padding: 22px; border-radius: 14px; font-size: 13px; line-height: 1.8;
       background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); color: #b9c6dd;
     }
-    .demo-aside b { color: #fff; }
+    .experience-aside b { color: #fff; }
     .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
     .metric { padding: 26px 20px; border-right: 1px solid var(--line); }
     .metric:last-child { border-right: 0; }
@@ -184,7 +184,7 @@
     .footer-links { display: flex; gap: 20px; font-size: 13px; color: var(--muted); }
     .footer-links a:hover { color: var(--blue); }
     @media (max-width: 900px) {
-      .hero-grid, .arch, .demo-card { grid-template-columns: 1fr; }
+      .hero-grid, .arch, .experience-card { grid-template-columns: 1fr; }
       .hero-shot { transform: none; margin-top: 8px; }
       .hero-note { right: 8px; bottom: -16px; }
       .features { grid-template-columns: 1fr 1fr; }
@@ -210,7 +210,7 @@
       <a class="brand" href="./"><span class="brand-mark" aria-hidden="true"></span>商境</a>
       <nav class="nav-links" aria-label="页面导航">
         <a href="#features">能力</a>
-        <a href="#demo">在线 Demo</a>
+        <a href="#experience">在线体验</a>
         <a href="#screens">界面</a>
         <a href="#flow">流程</a>
         <a href="#stack">架构</a>
@@ -223,9 +223,9 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <span class="badge"><i></i>全栈 AI 产品 · 2026</span>
+          <span class="badge"><i></i>企业级 AI 内容生产平台</span>
           <h1>让商品<br />被看见。</h1>
-          <p>商境把商品资料、创意素材和生成任务放在同一条创作链路里：长期聊天沉淀事实，无限画布组织创意，图片、视频与素材在同一处交付。</p>
+          <p>商境是面向电商团队的企业级 AI 内容生产平台：长期聊天沉淀商品事实，无限画布组织创意，图片、视频与素材在同一条链路里交付。</p>
           <div class="hero-actions">
             <a class="btn primary" href="#screens">查看真实界面 →</a>
             <a class="btn" href="#flow">了解流程</a>
@@ -238,22 +238,22 @@
       </div>
     </section>
 
-    <section class="demo-band" id="demo">
-      <div class="wrap demo-card">
+    <section class="experience-band" id="experience">
+      <div class="wrap experience-card">
         <div>
-          <div class="eyebrow">Live Demo</div>
-          <h2>登录后直接操作</h2>
-          <p>公开演示实例使用独立数据库、独立对象存储和本地模拟模型；不接触主数据，不调用真实供应商，不产生费用。</p>
-          <div class="demo-credentials">
-            <code>运营：demo@example.test / Demo2026!@</code>
-            <code>查看者：demo-viewer@example.test / Viewer2026!@</code>
+          <div class="eyebrow">Enterprise Experience</div>
+          <h2>在线体验企业级工作台</h2>
+          <p>隔离数据环境、独立对象存储与本地模型沙箱；不接触生产数据，不调用外部付费供应商，不产生费用。</p>
+          <div class="experience-credentials">
+            <code>运营账号：experience@shangjing.test / Experience2026!@</code>
+            <code>只读账号：viewer@shangjing.test / Viewer2026!@</code>
           </div>
-          <a class="btn primary" href="https://critical-warranty-allan-listen.trycloudflare.com/" target="_blank" rel="noreferrer">打开在线 Demo →</a>
+          <a class="btn primary" href="https://critical-warranty-allan-listen.trycloudflare.com/" target="_blank" rel="noreferrer">进入在线工作台 →</a>
         </div>
-        <div class="demo-aside">
-          <b>演示边界</b><br />AI 对话和生成图来自本地模拟模型，不会调用真实供应商。演示数据会定期重置，请勿上传真实资料。
+        <div class="experience-aside">
+          <b>环境说明</b><br />AI 对话和生成图使用本地模型沙箱，不会调用外部付费供应商。体验数据会定期重置，请勿上传真实资料。
           <br /><br />
-          <b>临时地址</b><br />Cloudflare 快速隧道重启后地址可能变化；展示页链接保持稳定。
+          <b>访问方式</b><br />使用上方运营或只读账号登录；管理员账号不对外。
         </div>
       </div>
     </section>
@@ -397,7 +397,7 @@
       </div>
       <div class="wrap">
         <div class="note">
-          <b>项目边界：</b>视频 H3 目前完成协议 fixture 验证，未做真实付费调用验收；截图识别需同时配置文本与视觉渠道；公开演示实例应使用独立数据库、独立模型额度与公共可信 TLS。
+          <b>项目边界：</b>视频 H3 目前完成协议 fixture 验证，未做真实付费调用验收；截图识别需同时配置文本与视觉渠道；在线体验环境使用独立数据库、独立模型额度与公共可信 TLS。
         </div>
       </div>
     </section>
@@ -407,7 +407,7 @@
     <div class="wrap footer-grid">
       <div>
         <div class="brand"><span class="brand-mark" aria-hidden="true"></span>商境</div>
-        <p>AI 电商内容工作台 · 个人全栈项目</p>
+        <p>企业级 AI 电商内容工作台 · 全栈工程实践</p>
       </div>
       <nav class="footer-links" aria-label="页脚链接">
         <a href="#features">能力</a>
