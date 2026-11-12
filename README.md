@@ -3,6 +3,7 @@
 面向电商团队的企业级 AI 内容生产平台：商品长期聊天、项目画布、图片生成、视频分镜、素材管理与权限审计。
 
 - 在线展示页：<https://ai-kaffey.github.io/shangjing-showcase/>
+- 当前网络镜像：<https://htmlpreview.github.io/?https://raw.githubusercontent.com/Ai-Kaffey/shangjing-showcase/main/index.html>
 - 展示内容：真实运行界面截图、能力说明、主流程与架构
 
 ## 在线体验
