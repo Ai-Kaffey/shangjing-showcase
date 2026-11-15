@@ -8,11 +8,11 @@
 
 ## 在线体验
 
-- 地址：<https://critical-warranty-allan-listen.trycloudflare.com/>
-- 运营账号：`experience@shangjing.test` / `Experience2026!@`
-- 只读账号：`viewer@shangjing.test` / `Viewer2026!@`
+- 地址：<http://110.42.51.234:38173>
+- 内容运营：`experience@shangjing.local` / `Enterprise2026!@`
+- 只读审计：`reviewer@shangjing.local` / `Enterprise2026!@`
 
-在线体验环境使用独立数据库、独立对象存储和本地模型沙箱，不调用外部付费供应商、不产生费用。体验数据会定期重置，请勿上传真实资料。
+在线体验环境部署在独立实例 `110.42.51.234`，使用独立数据库、独立对象存储与独立应用容器；请勿上传真实资料或密钥。
 
 ![项目画布](showcase/assets/04-canvas.png)
 
